@@ -26,3 +26,6 @@ for logger in logging_config["loggers"].values():
     except ValueError:
         continue
 logging.config.dictConfig(logging_config)
+
+
+{{ patch("ecommerce-worker-settings-production") }}
