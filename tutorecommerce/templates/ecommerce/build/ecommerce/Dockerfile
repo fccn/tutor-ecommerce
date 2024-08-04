@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt update && \
-    apt install -y curl gettext git-core language-pack-en
+    apt install -y curl gettext git-core language-pack-en pkg-config
 
 ###### Checkout code
 FROM minimal AS checkout
