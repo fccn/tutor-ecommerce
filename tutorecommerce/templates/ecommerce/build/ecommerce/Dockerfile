@@ -11,6 +11,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 ###### Checkout code
 FROM minimal AS checkout
 
+{{ patch("ecommmerce-dockerfile-minimal") }}
+
 ARG ECOMMERCE_REPOSITORY=https://github.com/openedx/ecommerce.git
 ARG ECOMMERCE_VERSION='{{ OPENEDX_COMMON_VERSION }}'
 RUN mkdir -p /openedx/ecommerce && \
