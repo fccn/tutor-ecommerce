@@ -209,7 +209,8 @@ def _mount_ecommerce_apps(
     elif path_basename == "frontend-app-ecommerce":
         # payment MFE will be handled by the tutor-mfe plugin, but we need to fix the
         # auto-mount for the ecommerce/order MFE
-        mounts.remove(("ecommerce", "/openedx/app"))
+        if ("ecommerce", "/openedx/app") in mounts:
+            mounts.remove(("ecommerce", "/openedx/app"))
         mounts.append(("orders", "/openedx/app"))
     return mounts
 
