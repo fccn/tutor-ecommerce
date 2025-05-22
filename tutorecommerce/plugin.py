@@ -226,8 +226,10 @@ def _mount_ecommerce_on_build(
     elif path_basename == "frontend-app-ecommerce":
         # payment MFE will be handled by the tutor-mfe plugin, but we need to fix the
         # auto-mount for the ecommerce/order MFE
-        mounts.remove(("mfe", "ecommerce-src"))
-        mounts.remove(("ecommerce-dev", "ecommerce-src"))
+        if ("mfe", "ecommerce-src") in mounts:
+            mounts.remove(("mfe", "ecommerce-src"))
+        if ("ecommerce-dev", "ecommerce-src") in mounts:
+            mounts.remove(("ecommerce-dev", "ecommerce-src"))
         mounts.append(("mfe", "orders-src"))
         mounts.append(("orders-dev", "orders-src"))
     return mounts
